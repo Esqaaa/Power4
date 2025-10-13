@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Power4 Web - Jeu</title>
+    <link rel="stylesheet" href="styleJeu.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Connect Four</h1>
+        <p>Joueur en cours : <strong>{{.CurrentPlayer}}</strong></p>
+        
+        <table>
+            {{range $row := .Board}}
+            <tr>
+                {{range $cell := $row}}
+                <td class="{{$cell}}"></td>
+                {{end}}
+            </tr>
+            {{end}}
+        </table>
+
+        <form action="/play" method="POST">
+            {{range $i := .Columns}}
+            <button type="submit" name="column" value="{{$i}}">{{$i}}</button>
+            {{end}}
+        </form>
+
+        {{if .Message}}
+        <p class="message">{{.Message}}</p>
+        {{end}}
+    </div>
+</body>
+</html>
