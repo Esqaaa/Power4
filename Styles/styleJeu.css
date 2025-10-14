@@ -1,56 +1,19 @@
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: #e2e8f0;
     margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4, #2769b9);
+    background-size: 400% 400%;
+    animation: gradientShift 10s ease infinite;
     min-height: 100vh;
-}
-
-.game-container {
-    text-align: center;
-}
-
-h1 {
-    color: #333;
-    margin-bottom: 10px;
-}
-
-.board {
-    display: grid;
-    grid-template-rows: repeat(6, 60px);
-    grid-template-columns: repeat(7, 60px);
-    gap: 5px;
+    display: flex;
+    align-items: center;
     justify-content: center;
-    margin-top: 20px;
 }
 
-.cell {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    border: 2px solid #333;
-    background-color: #f0f0f0;
-    cursor: pointer;
-    transition: transform 0.1s;
+@keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
 }
 
-.cell:hover {
-    transform: scale(1.1);
-}
-
-.cell.Player1 {
-    background-color: red;
-}
-
-.cell.Player2 {
-    background-color: yellow;
-}
-
-.winner {
-    margin-top: 20px;
-    font-size: 1.3rem;
-    color: green;
-    font-weight: bold;
-}
