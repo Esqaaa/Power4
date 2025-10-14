@@ -56,3 +56,39 @@ func gameHandler(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "Erreur template", http.StatusInternalServerError)
 	}
 }
+
+func checkWin() int {
+	for row := 0; row < 6; row++ {
+		for col := 0; col <= 3; col++ {
+			if board[row][col] != 0 && board[row][col] == board[row][col+1] &&
+				board[row][col] == board[row][col+2] && board[row][col] == board[row][col+3] {
+				return board[row][col]
+			}
+		}
+	}
+	for col := 0; col < 7; col++ {
+		for row := 0; row <= 2; row++ {
+			if board[row][col] != 0 && board[row][col] == board[row+1][col] &&
+				board[row][col] == board[row+2][col] && board[row][col] == board[row+3][col] {
+				return board[row][col]
+			}
+		}
+	}
+	for row := 0; row <= 2; row++ {
+		for col := 0; col <= 3; col++ {
+			if board[row][col] != 0 && board[row][col] == board[row+1][col+1] &&
+				board[row][col] == board[row+2][col+2] && board[row][col] == board[row+3][col+3] {
+				return board[row][col]
+			}
+		}
+	}
+	for row := 3; row < 6; row++ {
+		for col := 0; col <= 3; col++ {
+			if board[row][col] != 0 && board[row][col] == board[row-1][col+1] &&
+				board[row][col] == board[row-2][col+2] && board[row][col] == board[row-3][col+3] {
+				return board[row][col]
+			}
+		}
+	}
+	return 0
+}
