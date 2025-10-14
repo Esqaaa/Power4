@@ -1,0 +1,171 @@
+/* Import d'une police cool pour un effet futuriste */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron&family=Press+Start+2P&display=swap');
+
+/* Variables CSS pour les couleurs neon - Facile à changer ! */
+:root {
+    --color-neon-blue: #00ffff;
+    --color-neon-pink: #ff00ff;
+    --color-neon-green: #39ff14;
+    --color-dark-bg: #121212;
+    --color-glow: 0 0 20px var(--color-neon-blue);
+}
+
+/* Body : Fond animé avec un gradient qui pulse comme une rave party */
+body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(45deg, var(--color-neon-blue), var(--color-neon-pink), var(--color-neon-green));
+    background-size: 400% 400%;
+    animation: pulseGradient 15s ease infinite; /* Animation infinie pour le fond */
+    font-family: 'Orbitron', sans-serif; /* Police futuriste */
+    color: var(--color-neon-green); /* Texte en neon vert par défaut */
+    overflow: hidden; /* Empêche le scroll inutile */
+}
+
+/* Animation du gradient pour le fond */
+@keyframes pulseGradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Container : Centre tout avec un effet glow et une bordure animée */
+.container {
+    max-width: 800px;
+    margin: 50px auto; /* Centré horizontalement */
+    padding: 40px;
+    background-color: rgba(0, 0, 0, 0.8); /* Fond semi-transparent */
+    border: 2px solid var(--color-neon-blue);
+    border-radius: 20px; /* Coins arrondis */
+    box-shadow: 0 0 40px var(--color-neon-pink), 0 0 60px var(--color-neon-green); /* Ombre glow */
+    animation: glowBorder 2s ease-in-out infinite alternate; /* Animation de glow */
+}
+
+/* Animation pour la bordure du container */
+@keyframes glowBorder {
+    from { box-shadow: 0 0 20px var(--color-neon-pink), 0 0 40px var(--color-neon-green); }
+    to { box-shadow: 0 0 50px var(--color-neon-blue), 0 0 70px var(--color-neon-pink); }
+}
+
+/* Titre principal : Gros, bold, avec un effet 3D et animation de rebond */
+.gros-titre {
+    font-size: 3em; /* Très grand */
+    text-align: center;
+    color: var(--color-neon-blue);
+    text-shadow: 0 0 10px var(--color-neon-blue), 0 0 20px var(--color-neon-pink); /* Ombre neon */
+    animation: bounce 1.5s ease infinite; /* Rebond infini */
+    font-family: 'Press Start 2P', cursive; /* Police de jeu rétro-futuriste */
+}
+
+/* Animation de rebond pour le titre */
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); } /* Saute un peu */
+}
+
+/* Labels : Stylés avec un glow doux et une transition */
+label {
+    display: block;
+    margin: 20px 0 10px;
+    font-size: 1.2em;
+    color: var(--color-neon-green);
+    text-shadow: 0 0 5px var(--color-neon-green);
+    transition: all 0.3s ease; /* Transition fluide */
+}
+
+/* Inputs : Effet neon au focus, avec animation de scaling */
+input[type="text"] {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 2px solid var(--color-neon-blue);
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.1); /* Fond transparent */
+    color: var(--color-neon-green);
+    font-size: 1.1em;
+    box-shadow: inset 0 0 10px rgba(0, 255, 255, 0.5); /* Ombre intérieure */
+    transition: all 0.4s ease; /* Transition pour les effets */
+}
+
+input[type="text"]:focus {
+    outline: none; /* Pas de bordure par défaut */
+    border-color: var(--color-neon-pink);
+    box-shadow: 0 0 20px var(--color-neon-pink), 0 0 30px var(--color-neon-blue); /* Glow intense */
+    transform: scale(1.05); /* Grossit un peu */
+    animation: pulseInput 1s ease; /* Animation de pulse */
+}
+
+/* Animation pour les inputs */
+@keyframes pulseInput {
+    0% { box-shadow: 0 0 10px var(--color-neon-pink); }
+    50% { box-shadow: 0 0 30px var(--color-neon-pink); }
+    100% { box-shadow: 0 0 10px var(--color-neon-pink); }
+}
+
+/* Sous-titre (h3) : Animé avec un effet de glissement */
+h3 {
+    font-size: 1.8em;
+    text-align: center;
+    margin: 30px 0;
+    color: var(--color-neon-pink);
+    text-shadow: 0 0 15px var(--color-neon-pink);
+    animation: slideIn 1s ease-in-out; /* Glisse à l'apparition */
+}
+
+/* Animation de glissement pour h3 */
+@keyframes slideIn {
+    from { transform: translateX(-100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+/* Button group : Disposition en grid avec espacement */
+.button-group {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive grid */
+    gap: 15px;
+    margin-top: 20px;
+}
+
+/* Boutons : Effets fous ! Gradient, hover avec rotation et scale */
+button {
+    padding: 15px 25px;
+    background: linear-gradient(45deg, var(--color-neon-blue), var(--color-neon-pink));
+    color: var(--color-dark-bg); /* Texte foncé pour contraste */
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1em;
+    font-family: 'Orbitron', sans-serif;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3), 0 0 20px var(--color-neon-green); /* Ombre et glow */
+    transition: all 0.3s ease; /* Transition fluide */
+    animation: buttonPulse 2s infinite alternate; /* Pulse infini */
+}
+
+/* Animation de pulse pour les boutons */
+@keyframes buttonPulse {
+    from { transform: scale(1); }
+    to { transform: scale(1.05); } /* Grossit légèrement */
+}
+
+button:hover {
+    background: linear-gradient(45deg, var(--color-neon-green), var(--color-neon-blue));
+    transform: scale(1.1) rotate(5deg); /* Grossit et rotate un peu */
+    box-shadow: 0 0 30px var(--color-neon-pink), 0 0 50px var(--color-neon-green); /* Glow plus fort */
+}
+
+button:active {
+    transform: scale(0.95) rotate(-5deg); /* Rétrécit et rotate en sens inverse */
+    box-shadow: 0 0 10px var(--color-neon-blue); /* Ombre réduite */
+}
+
+/* Spécifique au bouton .btn1 pour le rendre unique */
+.btn1 {
+    background: linear-gradient(45deg, var(--color-neon-pink), var(--color-neon-green));
+    animation: spin 4s linear infinite; /* Tourne lentement */
+}
+
+/* Animation de rotation pour .btn1 */
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
