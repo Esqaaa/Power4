@@ -17,3 +17,70 @@ body {
       100% { background-position: 0% 50%; }
 }
 
+.container {
+    text-align: center;
+}
+
+.board {
+    border-collapse: collapse;
+    margin: 20px auto;
+    width: 420px;  /* 7 colonnes * 60px */
+    table-layout: fixed;  /* Fixe la largeur pour 7 colonnes */
+}
+
+.row {
+    display: flex;  /* Pour aligner les cellules en ligne */
+}
+
+.cell {
+    display: flex;
+    width: 60px;  /* Largeur fixe pour chaque cellule */
+    height: 60px;  /* Hauteur fixe pour un carré */
+    border: 2px solid #fff;
+    border-radius: 50%;  /* Cercle pour les cellules */
+    background-color: #2d3436 ;
+    display: flex;  /* Centrer le token */
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    box-shadow: inset 0 0 10px rgba(255,255,255,0.1);  /* Ombre intérieure pour visibilité */
+}
+
+.token {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;  /* Jeton rond */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);  /* Ombre pour pop */
+    box-sizing: border-box;
+}
+
+.token.red {
+    background-color: red;
+    background: radial-gradient(circle at 30% 30%, red, darkred);  /* Gradient pour style */
+}
+
+.token.yellow {
+    background-color: yellow;
+    background: radial-gradient(circle at 30% 30%, yellow, gold);  /* Gradient pour style */
+}
+
+.button-row {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.move-form button, .reset-form button {
+    margin: 5px;
+    padding: 10px 15px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    background-color: #333;
+    color: #fff;
+}
+
+.move-form button:hover, .reset-form button:hover {
+    background-color: #444;
+}

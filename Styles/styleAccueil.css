@@ -22,3 +22,16 @@ body {
     color: white;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
 }
+
+.title {
+    font-size: 4em;
+    margin: 0;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+
