@@ -69,7 +69,7 @@ Ouvrez votre navigateur et allez sur `http://localhost:8080`.
 
 ---
 
-## 👨‍💻 Technologies
+## 👨‍💻 Types de langages
 
 * Langages : **Go (Goland), HTML, CSS**
 * Serveur web : Go standard net/http
@@ -86,4 +86,4 @@ Projet développé à titre éducatif — © 2025 **Equipe Puissance 4 Web**.
 
 ## 🏫 Crédits
 
-Projet réalisé dans le cadre d’un projet au sein d'Ynov Campus Strasbourg B1 info-cybersécurité 2025/2026
+Projet réalisé dans le cadre d’un projet au sein d'Ynov Campus Strasbourg B1 Info-Cybersécurité 2025/2026
