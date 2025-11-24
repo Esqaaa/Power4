@@ -1,0 +1,119 @@
+/* ======== RESET & BODY ======== */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #000; /* Fond noir */
+    color: #fff;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: none;
+}
+
+/* ======== CONTAINER ======== */
+.container {
+    text-align: center;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    width: 90%;
+    max-width: 500px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* ======== TITRE ======== */
+.title {
+    font-size: clamp(2rem, 8vw, 4rem);
+    margin: 0;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+/* ======== SOUS-TITRE ======== */
+.subtitle {
+    font-size: clamp(1rem, 4vw, 1.5rem);
+    margin: 20px 0;
+    opacity: 0.9;
+}
+
+/* ======== BOUTON JOUER ======== */
+.play-button {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: clamp(10px, 2vw, 15px) clamp(20px, 5vw, 30px);
+    font-size: clamp(1rem, 4vw, 1.5rem);
+    font-weight: 600;
+    text-decoration: none;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    overflow: hidden;
+    background-color: #000;
+    z-index: 1;
+    transition: all 0.3s ease;
+}
+
+/* Gradient animé derrière le bouton */
+.play-button::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    background: linear-gradient(-45deg, #e81cff, #40c9ff, #fc00ff, #00dbde);
+    background-size: 400% 400%;
+    z-index: -1;
+    animation: gradientAnim 10s ease infinite;
+}
+
+@keyframes gradientAnim {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Effet de glow */
+.play-button::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(-45deg, #fc00ff, #00dbde);
+    filter: blur(15px);
+    z-index: -2;
+    opacity: 0.7;
+    transition: all 0.3s ease;
+}
+
+.play-button:hover::after {
+    filter: blur(25px);
+}
+
+/* Hover effect */
+.play-button:hover {
+    transform: scale(1.05);
+}
+
+
+/* ======== MEDIA QUERIES POUR MOBILE ======== */
+@media (max-width: 480px) {
+    .title {
+        font-size: clamp(1.5rem, 10vw, 3rem);
+    }
+    .subtitle {
+        font-size: clamp(0.9rem, 5vw, 1.2rem);
+    }
+    .play-button {
+        padding: clamp(8px, 4vw, 12px) clamp(15px, 6vw, 25px);
+        font-size: clamp(0.9rem, 4vw, 1.2rem);
+    }
+}

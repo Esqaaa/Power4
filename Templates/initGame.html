@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personnalisation</title>
+    <link rel="stylesheet" href="/static/styleGame.css">
+    <script>
+        // Script pour copier automatiquement les noms saisis
+        // vers tous les formulaires de difficulté.
+        function syncNames() {
+            const j1 = document.getElementById("joueur1").value;
+            const j2 = document.getElementById("joueur2").value;
+
+            document.querySelectorAll('input[name="joueur1"]').forEach(i => i.value = j1);
+            document.querySelectorAll('input[name="joueur2"]').forEach(i => i.value = j2);
+        }
+    </script>
+</head>
+<body>
+<div class="container">
+    <h1 class="gros-titre">Paramètres du jeu</h1>
+
+    {{if .Error}}
+    <p class="error">{{.Error}}</p>
+    {{end}}
+
+    <!-- Formulaire principal -->
+    <form action="/start" method="POST" oninput="syncNames()">
+        <label for="joueur1">Joueur 1 :</label>
+        <input type="text" id="joueur1" name="joueur1" required minlength="3" maxlength="15" value="{{.Joueur1}}">
+
+        <label for="joueur2">Joueur 2 :</label>
+        <input type="text" id="joueur2" name="joueur2" required minlength="3" maxlength="15" value="{{.Joueur2}}">
+
+        <input type="hidden" name="blocks" value="0">
+        <input type="hidden" name="difficulty" value="basique">
+        <button type="submit" class="btn">Commencer (Power 4 basique)</button>
+    </form>
+
+    <h3 class="gradient-text"> Ou choisis une difficulté :</h3>
+
+    <div class="button-group">
+
+        <!--Difficulté facile-->
+        <form method="POST" action="/start" onsubmit="syncNames()">
+            <input type="hidden" name="joueur1" value="{{.Joueur1}}">
+            <input type="hidden" name="joueur2" value="{{.Joueur2}}">
+            <input type="hidden" name="blocks" value="3">
+            <input type="hidden" name="difficulty" value="easy">
+            <button type="submit" class="btn">Easy 6x7 - 3 Blocks</button>
+        </form>
+
+        <!--Difficulté normale-->
+        <form method="POST" action="/start" onsubmit="syncNames()">
+            <input type="hidden" name="joueur1" value="{{.Joueur1}}">
+            <input type="hidden" name="joueur2" value="{{.Joueur2}}">
+            <input type="hidden" name="blocks" value="5">
+            <input type="hidden" name="difficulty" value="normal">
+            <button type="submit" class="btn">Normal 6x9 - 5 Blocks</button>
+        </form>
+
+        <!--Difficulté hard-->
+        <form method="POST" action="/start" onsubmit="syncNames()">
+            <input type="hidden" name="joueur1" value="{{.Joueur1}}">
+            <input type="hidden" name="joueur2" value="{{.Joueur2}}">
+            <input type="hidden" name="blocks" value="7">
+            <input type="hidden" name="difficulty" value="hard">
+            <button type="submit" class="btn">Hard 7x8 - 7 Blocks</button>
+        </form>
+
+        <!--Difficulté chaos totale-->
+        <form method="POST" action="/start" onsubmit="syncNames()">
+            <input type="hidden" name="joueur1" value="{{.Joueur1}}">
+            <input type="hidden" name="joueur2" value="{{.Joueur2}}">
+            <input type="hidden" name="difficulty" value="chaos">
+            <button type="submit" class="btn">Chaos Mode 🎲 (Grille random)</button>
+        </form>
+
+        <!--Bloc fou-->
+        <form method="POST" action="/start" onsubmit="syncNames()">
+            <input type="hidden" name="joueur1" value="{{.Joueur1}}">
+            <input type="hidden" name="joueur2" value="{{.Joueur2}}">
+            <input type="hidden" name="difficulty" value="blocfou">
+            <button type="submit" class="btn">🧱 Mode Bloc Fou</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

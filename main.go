@@ -1,12 +1,9 @@
 package main
 
 import (
-	"fmt"
 	"html/template"
 	"math/rand"
 	"net/http"
-	"strconv"
-	"strings"
 	"time"
 )
 
@@ -75,4 +72,45 @@ func PlaceRandomBlocs(nb int) {
 			placed++
 		}
 	}
+}
+
+func init() {
+	var err error
+	rand.Seed(time.Now().UnixNano())
+	tpl, err = template.New("").Funcs(template.FuncMap{
+		"add1": func(i int) int { return i + 1 },
+	}).ParseGlob("templates/*.html")
+	if err != nil {
+		panic(err)
+	}
+}
+
+// Route accueil
+func indexHandler(w http.ResponseWriter, r *http.Request) {
+	tpl.ExecuteTemplate(w, "index.html", nil)
+}
+
+// Route initGame : affiche la page de saisie des noms
+func initHandler(w http.ResponseWriter, r *http.Request) {
+	var j1, j2 string
+
+	// Si on arrive depuis une redirection (POST -> GET), garder les noms
+	if nomJoueur1 != "" {
+		j1 = nomJoueur1
+	}
+	if nomJoueur2 != "" {
+		j2 = nomJoueur2
+	}
+
+	data := struct {
+		Joueur1 string
+		Joueur2 string
+		Error   string
+	}{
+		Joueur1: j1,
+		Joueur2: j2,
+		Error:   "Veuillez saisir les noms des joueurs avant de commencer !",
+	}
+
+	tpl.ExecuteTemplate(w, "initGame.html", data)
 }
