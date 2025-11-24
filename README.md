@@ -53,6 +53,10 @@ go mod tidy
 ```bash
 go run main.go
 ```
+ou 
+```bash
+go run power4
+```
 
 ### 4. Jouer
 
