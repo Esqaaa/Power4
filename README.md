@@ -64,15 +64,6 @@ Ouvrez votre navigateur et allez sur `http://localhost:8080`.
 
 ---
 
-## 💡 Astuces
-
-* Sélectionnez la difficulté adaptée à votre expérience.
-* Mode **Bloc Fou** : surveillez les blocs aléatoires qui apparaissent chaque tour.
-* Mode **Chaos** : chaque partie est unique, la grille et les blocs sont aléatoires.
-* La gravité change toutes les 5 tours si activée, soyez attentifs aux directions de chute !
-
----
-
 ## 👨‍💻 Types de langages
 
 * Langages : **Go (Goland), HTML, CSS**
@@ -90,4 +81,4 @@ Projet développé à titre éducatif — © 2025 **Equipe Puissance 4 Web**.
 
 ## 🏫 Crédits
 
-Projet réalisé dans le cadre d’un projet au sein d'Ynov Campus Strasbourg B1 Info-Cybersécurité 2025/2026
+Projet réalisé dans le cadre d’un projet au sein d'Ynov Campus Strasbourg B1 Info-Cybersécurité 2025/2026 par SCHMALTZ Hugo et SCHMITT Gabriel
