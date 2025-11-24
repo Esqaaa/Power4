@@ -1,52 +1,95 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Power4 - Jeu</title>
-<link rel="stylesheet" href="/static/styleJeu.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Le Jeu</title>
+    <link rel="stylesheet" href="/static/styleJeu.css">
 </head>
 <body>
-<div class="container">
-    <h1>Power4 - Connect 4</h1>
-    <div class="message">{{.Message}}</div>
+    <div class="container {{.Difficulty}} {{if not .GravityNormal}}inverse{{end}}">
+        <h1>Power4 - Connect 4</h1>
 
-    <table class="board">
-    {{range $rowIndex, $row := .Board}}  <!-- 6 lignes -->
-    <tr class="row">
-        {{range $colIndex, $cell := $row}}  <!-- 7 colonnes par ligne -->
-        <td class="cell">
-        {{if eq $cell 1}}
-            <div class="token red"></div>
-        {{else if eq $cell 2}}
-            <div class="token yellow"></div>
+        {{if not .GravityNormal}}
+        <div class="gravity-message {{if .GravityNormal}}hidden{{end}}">
+            ⚠️ Gravité inversée ! ⚠️
+        </div>
         {{end}}
-        </td>
-        {{end}}
-    </tr>
-    {{end}}
-    </table>
 
-    {{if not .GameOver}}
-    <div class = "button-row">
-        <form method="POST" action="/play" class="move-form">
-            <button type="submit" name="column" value="0">1</button>
-            <button type="submit" name="column" value="1">2</button>
-            <button type="submit" name="column" value="2">3</button>
-            <button type="submit" name="column" value="3">4</button>
-            <button type="submit" name="column" value="4">5</button>
-            <button type="submit" name="column" value="5">6</button>
-            <button type="submit" name="column" value="6">7</button>
-        </form>
+        <div class="players">
+            <div class="player red {{if eq .CurrentPlayer 1}}active{{end}}">
+                {{.Joueur1}}
+            </div>
+            <div class="player yellow {{if eq .CurrentPlayer 2}}active{{end}}">
+                {{.Joueur2}}
+            </div>
+        </div>
+
+        <div class="turn-counter">
+            Tour : {{.Turn}}
+        </div>
+
+        <div class="message">
+            {{.Message}}
+        </div>
+
+        <!-- Scoreboard -->
+        <div class="scoreboard">
+            <div class="score red">
+                <span class="name">{{.Joueur1}}</span>
+                <span class="wins">Victoires : {{.Joueur1Wins}}</span>
+            </div>
+            <div class="score yellow">
+                <span class="name">{{.Joueur2}}</span>
+                <span class="wins">Victoires : {{.Joueur2Wins}}</span>
+            </div>
+        </div>
+
+
+        <!-- Plateau -->
+        <div class="board-grid" style="--cols: {{len .Cols}};">
+            {{range $rowIndex, $row := .Board}}
+                {{range $colIndex, $cell := $row}}
+                    <div class="cell">
+                        {{if eq $cell 1}}<div class="token red"></div>{{end}}
+                        {{if eq $cell 2}}<div class="token yellow"></div>{{end}}
+                        {{if eq $cell 3}}<div class="token block"></div>{{end}}
+                    </div>
+                {{end}}
+            {{end}}
+        </div>
+
+        <!-- Boutons colonnes -->
+        {{if not .GameOver}}
+        <div class="button-row" style="--cols: {{len .Cols}};">
+            {{range $i := .Cols}}
+                <form method="POST" action="/play" style="display:inline;">
+                    <input type="hidden" name="column" value="{{$i}}">
+                    <button type="submit">{{$i | add1}}</button>
+                </form>
+            {{end}}
+        </div>
+        {{end}}
+
+        <br>
+        <a href="/init" class="btn">Retour Accueil</a>
     </div>
-    {{else}}
-    <form method="POST" action="/reset">
-        <button type="submit">Nouvelle Partie</button>
-    </form>
+
+    {{if .GameOver}}
+    <div class="winner-screen">
+        <div>
+            <h1>
+                {{if eq .Winner 1}}{{.Joueur1}} a gagné ! 🎉{{else if eq .Winner 2}}{{.Joueur2}} a gagné ! 🎉{{else}}Match nul ! 😅{{end}}
+            </h1>
+            <form method="POST" action="/reset">
+                <button type="submit" class="btn">Retour aux paramètres</button>
+            </form>
+            <form method="POST" action="/rematch" style="margin-top:10px;">
+                <button type="submit" class="btn">Revanche</button>
+            </form>
+        </div>
+    </div>
     {{end}}
 
-    <br>
-    <a href="/">Retour Accueil</a>
-</div>
 </body>
 </html>
