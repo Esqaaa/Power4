@@ -1,14 +1,14 @@
 # 🎮 Projet Puissance 4 Web
 
-Bienvenue dans le dépôt **Projet Puissance 4 Web**, un jeu de **Puissance 4** jouable directement dans le navigateur avec HTML, CSS et Go.
+Bienvenue dans le dépôt **Projet Puissance 4 Web**, un jeu de **Puissance 4** jouable dans le navigateur avec HTML, CSS et Go.
 
-> 🔴⚪ Connectez 4 jetons et remportez la partie !
+> Connectez 4 jetons et remportez la partie !
 
 ---
 
 ## 🚀 Présentation
 
-Ce projet est un **jeu web interactif** pour deux joueurs, avec plusieurs modes de difficulté et fonctionnalités uniques :
+Ce projet est un **jeu web interactif** pour deux joueurs, avec plusieurs modes de difficulté et fonctionnalités :
 
 ### Fonctionnalités principales
 
@@ -73,12 +73,6 @@ Ouvrez votre navigateur et allez sur `http://localhost:8080`.
 
 ---
 
-## 🧾 Licence
-
-Projet développé à titre éducatif — © 2025 **Equipe Puissance 4 Web**.
-
----
-
 ## 🏫 Crédits
 
-Projet réalisé dans le cadre d’un projet au sein d'Ynov Campus Strasbourg B1 Info-Cybersécurité 2025/2026 par SCHMALTZ Hugo et SCHMITT Gabriel
+Ce jeu a été réalisé dans le cadre d’un projet au sein d'Ynov Campus Strasbourg B1 Info-Cybersécurité 2025/2026 par SCHMALTZ Hugo et SCHMITT Gabriel
